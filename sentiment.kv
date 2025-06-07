@@ -1,0 +1,41 @@
+#:kivy 2.0.0
+<SentimentAppLayout>:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 10
+    canvas.before:
+        Color:
+            rgba: 0.95, 0.95, 0.98, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: 'Amazon Review Sentiment Analysis'
+        font_size: 24
+        color: 0.2, 0.2, 0.2, 1
+        size_hint_y: None
+        height: 50
+
+    TextInput:
+        id: review_input
+        hint_text: 'Enter your review here...'
+        multiline: True
+        size_hint_y: None
+        height: 100
+        background_color: 1, 1, 1, 1
+        foreground_color: 0, 0, 0, 1
+
+    Button:
+        text: 'Predict Sentiment'
+        size_hint_y: None
+        height: 50
+        background_color: 0.1, 0.7, 0.3, 1
+        on_press: root.predict_sentiment(review_input.text)
+
+    Label:
+        text: root.prediction_text
+        font_size: 18
+        color: 0.3, 0.3, 0.3, 1
+        size_hint_y: None
+        height: 50
